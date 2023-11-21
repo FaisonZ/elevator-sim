@@ -1,0 +1,113 @@
+/*
+  For this project, I'm going to follow RSCSS. It's basically
+  a different take to BEM.
+  
+  Since I'm not using a preprocessor, I will not be following
+  the "One component per file" rule. All the styling is in
+  this file.
+
+  https://ricostacruz.com/rscss/index.html
+*/
+
+html {
+  background-color: #ccc;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.elevator-sim {
+  display: grid;
+  grid-template-columns: auto auto min-content;
+  grid-template-rows: min-content auto;
+  grid-template-areas: 
+    "header header header"
+    "building building buttons";
+  height: 100vh;
+  padding: 0.5rem;
+}
+
+.elevator-sim > .elevator-display {
+  grid-area: header;
+}
+
+.elevator-sim > .building-diagram {
+  grid-area: building;
+}
+
+.elevator-sim > .elevator-panel {
+  grid-area: buttons;
+  align-self: center;
+  padding-left: 0.5rem;
+}
+
+.building-diagram {
+  display: flex;
+  border: 1px solid #000;
+}
+
+.building-diagram > .building-floors {
+  flex: 1;
+}
+
+.building-diagram > .elevator-shaft {
+  width: 5rem;
+}
+
+.building-floors {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.building-floors > .building-floor {
+  height: 25%;
+}
+
+.building-floor {
+  padding: 0.5rem;
+  border-bottom: 3px solid #444
+}
+
+.elevator-shaft {
+  border-left: 1px solid #000;
+  padding: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.elevator-shaft > .elevator {
+  height: 25%;
+  width: 100%;
+  border: 3px solid #000;
+  border-radius: 5%;
+  position: relative;
+  top: 75%;
+  display: flex;
+  justify-content: center;
+  background-color: #eee;
+}
+
+.elevator-shaft > .elevator::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 4px;
+  height: 100vh;
+  top: -100vh;
+  background-color: #444;
+  z-index: -1;
+}
+
+.elevator-buttons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
